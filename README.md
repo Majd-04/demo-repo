@@ -341,15 +341,3 @@ This code implements a **production-style local conversational RAG pipeline** th
 * Retrieves relevant context
 * Rewrites dependent questions
 * Generates grounded answers using LLM
-
----
-
-If needed, you can extend this system by:
-
-* Adding streaming responses
-* Turning it into a web app (FastAPI / Streamlit)
-* Converting it into an AI Agent
-* Adding metadata filtering
-* Optimizing chunk size and retrieval strategy
-
----
