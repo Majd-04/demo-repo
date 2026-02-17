@@ -341,3 +341,6 @@ This code implements a **production-style local conversational RAG pipeline** th
 * Retrieves relevant context
 * Rewrites dependent questions
 * Generates grounded answers using LLM
+
+# subheader
+changed this part on my computer

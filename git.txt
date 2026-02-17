@@ -1,0 +1,5 @@
+git clone <repository_url> => Clones a repository into a new directory.
+git status => Shows the working tree status.
+git add . => Adds all changes in the current directory to the staging area.
+git commit -m "commit message"
+git push origin master
