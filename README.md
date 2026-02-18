@@ -5,6 +5,8 @@
 - `git add .` => Adds all changes in the current directory to the staging area.
 - `git commit -m "commit message" -m "detailed description"` => Commits the staged changes with a message and a detailed description.
 - `git commit -am "commit message"` => Stages and commits all changes in one command, but only for tracked files.
+- `git log` => Shows the commit history.
+
 ---
 - **Important Note:** If you accidentally commit sensitive files (like private keys), GitHub's Push Protection will block the push to prevent a security breach. To resolve this, you need to:
   1. Undo the commits that included the sensitive files using `git reset --soft HEAD~n` (where n is the number of commits to undo).
