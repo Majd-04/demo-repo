@@ -1,6 +1,3 @@
-- [git cheat sheet](https://git-scm.com/cheat-sheet)
-- [git basics video](https://youtu.be/RGOj5yH7evk?si=BwCbqAFFBobD_sxY)
-
 # Git Commands and Best Practices for Managing Repositories
 ## Basic Git Commands:
 - `git clone <repository_url>` => Clones a repository into a new directory.
@@ -71,3 +68,6 @@ go to github and create a pull request from the feature branch to the main branc
 - Always test your changes locally before pushing them to the remote repository to ensure that they work as expected and do not introduce bugs.
 - Communicate with your team members about the changes you are making and coordinate on larger features or refactoring efforts to avoid conflicts and ensure a smooth development process.
 
+**Resources**
+- [git cheat sheet](https://git-scm.com/cheat-sheet)
+- [git basics video](https://youtu.be/RGOj5yH7evk?si=BwCbqAFFBobD_sxY)
