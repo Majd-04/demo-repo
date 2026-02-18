@@ -4,6 +4,7 @@
 - `git status` => Shows the working tree status.
 - `git add .` => Adds all changes in the current directory to the staging area.
 - `git commit -m "commit message" -m "detailed description"` => Commits the staged changes with a message and a detailed description.
+- `git commit -am "commit message"` => Stages and commits all changes in one command, but only for tracked files.
 ---
 - **Important Note:** If you accidentally commit sensitive files (like private keys), GitHub's Push Protection will block the push to prevent a security breach. To resolve this, you need to:
   1. Undo the commits that included the sensitive files using `git reset --soft HEAD~n` (where n is the number of commits to undo).
@@ -36,12 +37,12 @@
 - `git branch` => Lists all local branches in the repository. The current branch will be highlighted with an asterisk (*).
 - `git checkout -b <branch_name>` => Creates a new branch with the specified name and switches to it.
 - `git checkout <branch_name>` => Switches to the specified existing branch.
-- `git merge <branch_name>` => Merges the specified branch into the current branch.
 - `git diff <branch_name>` => Shows the differences between the current branch and the specified branch.
 - to merge changes from a feature branch to the main branch, you would typically:
 go to github and create a pull request from the feature branch to the main branch, review the changes, and then merge the pull request. This process allows for code review and ensures that only approved changes are merged into the main branch.
 - `git pull` => Fetches and integrates changes from the remote repository into the current branch. This is useful for keeping your local branch up to date with the latest changes from the remote repository.
 - `git branch -d <branch_name>` => Deletes the specified local branch. Use `-D` to force delete if the branch has unmerged changes.
+- `git merge <branch_name>` => Merges the specified branch into the current branch. Mergin on local machine is not recommended for collaborative projects; instead, use pull requests on GitHub to manage merges and code reviews. But while working on a local feature branch, the main branch may receive updates from other collaborators. To keep your feature branch up to date, you should merge the latest changes from the main branch into your feature branch. This can be done with `git merge main` while you are on your feature branch. This ensures that your branch has the latest changes and helps to avoid conflicts when you eventually create a pull request to merge back into main.
 
 ### **Issue: Git Secret Leak & Push Block**
 
