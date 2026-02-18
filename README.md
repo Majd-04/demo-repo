@@ -18,8 +18,9 @@
 - git checkout -b <branch_name> => Creates a new branch with the specified name and switches to it.
 - git checkout <branch_name> => Switches to the specified existing branch.
 - git merge <branch_name> => Merges the specified branch into the current branch.
-
-(I am now making changes inside the new branch to test it )
+- git diff <branch_name> => Shows the differences between the current branch and the specified branch.
+- to merge changes from a feature branch to the main branch, you would typically:
+go to github and create a pull request from the feature branch to the main branch, review the changes, and then merge the pull request. This process allows for code review and ensures that only approved changes are merged into the main branch.
 
 - **Important Note:** If you accidentally commit sensitive files (like private keys), GitHub's Push Protection will block the push to prevent a security breach. To resolve this, you need to:
   1. Undo the commits that included the sensitive files using `git reset --soft HEAD~n` (where n is the number of commits to undo).
