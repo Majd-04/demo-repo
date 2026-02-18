@@ -5,14 +5,19 @@
 - `git add .` => Adds all changes in the current directory to the staging area.
 - `git commit -m "commit message" -m "detailed description"` => Commits the staged changes with a message and a detailed description.
 - `git commit -am "commit message"` => Stages and commits all changes in one command, but only for tracked files.
+- `git reset` => undoes the staging of files, moving them back to the working directory without changing the commit history.
+- `git reset <file name>` => unstages a specific file, moving it back to the working directory without changing the commit history.
+- `git reset HEAD~1` => undoes the last commit, moving the changes back to the staging area.
 - `git log` => Shows the commit history.
-
+- `git reset <commit_hash>` => Resets the current branch to the specified commit, discarding all commits after it. Use with caution as it can lead to loss of work if not used properly.
 ---
 - **Important Note:** If you accidentally commit sensitive files (like private keys), GitHub's Push Protection will block the push to prevent a security breach. To resolve this, you need to:
   1. Undo the commits that included the sensitive files using `git reset --soft HEAD~n` (where n is the number of commits to undo).
   2. Remove the sensitive files from the staging area with `git rm --cached <file>`.
   3. Add a proper `.gitignore` file to prevent future accidental commits of sensitive files.
   4. Re-commit and push only the necessary project files.
+* **Key Lesson:** Use a `.gitignore` *before* running `git add .` to ensure secrets never enter the version control history. Once a secret is committed, you must rewrite history to remove it.
+---
 ## Setting Up a New Git Repository on Local Machine and Connecting to GitHub:
 - `git init` => Initializes a new Git repository in the current directory.
 - `git remote add origin <repository_url>` => Adds a new remote repository with the specified URL.
@@ -45,16 +50,18 @@ go to github and create a pull request from the feature branch to the main branc
 - `git pull` => Fetches and integrates changes from the remote repository into the current branch. This is useful for keeping your local branch up to date with the latest changes from the remote repository.
 - `git branch -d <branch_name>` => Deletes the specified local branch. Use `-D` to force delete if the branch has unmerged changes.
 - `git merge <branch_name>` => Merges the specified branch into the current branch. Mergin on local machine is not recommended for collaborative projects; instead, use pull requests on GitHub to manage merges and code reviews. But while working on a local feature branch, the main branch may receive updates from other collaborators. To keep your feature branch up to date, you should merge the latest changes from the main branch into your feature branch. This can be done with `git merge main` while you are on your feature branch. This ensures that your branch has the latest changes and helps to avoid conflicts when you eventually create a pull request to merge back into main.
-
-### **Issue: Git Secret Leak & Push Block**
-
-* **The Problem:** I accidentally staged and committed sensitive files (`testkey`, `testkey.pub`) using `git add .`. GitHub’s **Push Protection** detected the private SSH key and blocked the push to prevent a security leak.
-* **Why `.gitignore` alone didn't fix it:** Even after adding the keys to `.gitignore`, they remained in the **Git History** of previous commits. Git attempts to push the entire history, not just the current state of files.
-* **The Solution:**
-1. **Undo the "dirty" commits:** Used `git reset --soft` to roll back the history while keeping the file changes.
-2. **Remove from index:** Used `git rm --cached` to stop Git from tracking the keys.
-3. **Clean Commit:** Re-committed only the legitimate project files.
-
-
-* **Key Lesson:** Use a `.gitignore` *before* running `git add .` to ensure secrets never enter the version control history. Once a secret is committed, you must rewrite history to remove it.
+---
+## Forking and Pull Requests:
+- To contribute to a project you don't have write access to, you can fork the repository on GitHub, which creates a copy of the repository under your account. You can then clone your fork to your local machine, make changes, and push them back to your forked repository. After that, you can create a pull request from your forked repository to the original repository, proposing your changes for review and potential merging by the maintainers of the original repository.
+---
+## Best Practices for Managing Git Repositories:
+- Always write clear and descriptive commit messages to explain the purpose of each commit.
+- Use branches to work on new features or bug fixes without affecting the main codebase.
+- Regularly pull changes from the remote repository to keep your local branch up to date.
+- Use pull requests for code reviews and to facilitate collaboration with other developers.
+- Avoid committing sensitive information, such as API keys or passwords, to the repository. Use environment variables or a secure vault to manage sensitive data.
+- Regularly clean up old branches that are no longer needed to keep the repository organized.
+- Use `.gitignore` to exclude files and directories that should not be tracked by Git, such as build artifacts, log files, and sensitive information.
+- Always test your changes locally before pushing them to the remote repository to ensure that they work as expected and do not introduce bugs.
+- Communicate with your team members about the changes you are making and coordinate on larger features or refactoring efforts to avoid conflicts and ensure a smooth development process.
 
