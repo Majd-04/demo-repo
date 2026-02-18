@@ -10,6 +10,7 @@
   2. Remove the sensitive files from the staging area with `git rm --cached <file>`.
   3. Add a proper `.gitignore` file to prevent future accidental commits of sensitive files.
   4. Re-commit and push only the necessary project files.
+## Setting Up a New Git Repository on Local Machine and Connecting to GitHub:
 - git init => Initializes a new Git repository in the current directory.
 - git remote add origin <repository_url> => Adds a new remote repository with the specified URL.
 - git remote -v => Verifies the remote repository configuration by listing the remote URLs.
