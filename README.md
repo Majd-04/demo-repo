@@ -1,5 +1,5 @@
-[git cheat sheet](https://git-scm.com/cheat-sheet)
-[git basics video](https://youtu.be/RGOj5yH7evk?si=BwCbqAFFBobD_sxY)
+- [git cheat sheet](https://git-scm.com/cheat-sheet)
+- [git basics video](https://youtu.be/RGOj5yH7evk?si=BwCbqAFFBobD_sxY)
 
 # Git Commands and Best Practices for Managing Repositories
 ## Basic Git Commands:
