@@ -20,9 +20,12 @@
 ---
 ## Setting Up a New Git Repository on Local Machine and Connecting to GitHub:
 - `git init` => Initializes a new Git repository in the current directory.
+- `git add .` => Stages all changes in the current directory for the initial commit.
+- `git commit -m "first commit"` => Commits the staged changes with a message
+- `git branch -M main` => Renames the default branch to "main".
 - `git remote add origin <repository_url>` => Adds a new remote repository with the specified URL.
-- `git remote -v` => Verifies the remote repository configuration by listing the remote URLs.
 - `git push -u origin main` => Pushes the committed changes to the remote repository and sets the upstream branch for future pushes. so that you can simply use `git push` in the future without specifying the remote and branch.
+- `git remote -v` => Verifies the remote repository configuration by listing the remote URLs.
 ---
 ## GitHub SSH Key Management:
 - `ssh-keygen -t rsa -b 4096 -C "email@example.com"` => Generates a new SSH key pair for - authentication.
