@@ -12,4 +12,36 @@
 - on GitHub, navigate to Settings > SSH and GPG keys > New SSH key, then paste the public key and save it.
 - eval "$(ssh-agent -s)" => Starts the SSH agent in the background.
 - ssh-add testkey => Adds the private key to the SSH agent for authentication.
-- git push origin master => Pushes the committed changes to the remote repository on GitHub.
+- git push origin main => Pushes the committed changes to the remote repository on GitHub.
+- git push => Pushes the committed changes to the remote repository. If the upstream branch is set, it will push to that branch; otherwise, it may require specifying the remote and branch.
+- git branch => Lists all local branches in the repository. The current branch will be highlighted with an asterisk (*).
+- git checkout -b <branch_name> => Creates a new branch with the specified name and switches to it.
+- git checkout <branch_name> => Switches to the specified existing branch.
+- git merge <branch_name> => Merges the specified branch into the current branch.
+
+(I am now making changes inside the new branch to test it )
+
+- **Important Note:** If you accidentally commit sensitive files (like private keys), GitHub's Push Protection will block the push to prevent a security breach. To resolve this, you need to:
+  1. Undo the commits that included the sensitive files using `git reset --soft HEAD~n` (where n is the number of commits to undo).
+  2. Remove the sensitive files from the staging area with `git rm --cached <file>`.
+  3. Add a proper `.gitignore` file to prevent future accidental commits of sensitive files.
+  4. Re-commit and push only the necessary project files.
+- git init => Initializes a new Git repository in the current directory.
+- git remote add origin <repository_url> => Adds a new remote repository with the specified URL.
+- git remote -v => Verifies the remote repository configuration by listing the remote URLs.
+- git push -u origin main => Pushes the committed changes to the remote repository and sets the upstream branch for future pushes. so that you can simply use `git push` in the future without specifying the remote and branch.
+---
+To add this to your notes, here is a concise breakdown of the situation:
+
+### **Issue: Git Secret Leak & Push Block**
+
+* **The Problem:** I accidentally staged and committed sensitive files (`testkey`, `testkey.pub`) using `git add .`. GitHub’s **Push Protection** detected the private SSH key and blocked the push to prevent a security leak.
+* **Why `.gitignore` alone didn't fix it:** Even after adding the keys to `.gitignore`, they remained in the **Git History** of previous commits. Git attempts to push the entire history, not just the current state of files.
+* **The Solution:**
+1. **Undo the "dirty" commits:** Used `git reset --soft` to roll back the history while keeping the file changes.
+2. **Remove from index:** Used `git rm --cached` to stop Git from tracking the keys.
+3. **Clean Commit:** Re-committed only the legitimate project files.
+
+
+* **Key Lesson:** Use a `.gitignore` *before* running `git add .` to ensure secrets never enter the version control history. Once a secret is committed, you must rewrite history to remove it.
+
